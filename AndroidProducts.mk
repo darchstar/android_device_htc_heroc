@@ -26,5 +26,5 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/generic_hero.mk \
-    $(LOCAL_DIR)/full_hero.mk
+    $(LOCAL_DIR)/generic_heroc.mk \
+    $(LOCAL_DIR)/froyo_hero.mk
