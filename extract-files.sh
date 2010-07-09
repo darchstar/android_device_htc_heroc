@@ -44,10 +44,10 @@ adb pull /system/lib/libOmxH264Dec.so ../../../vendor/htc/$DEVICE/proprietary/li
 adb pull /system/lib/libOmxMpeg4Dec.so ../../../vendor/htc/$DEVICE/proprietary/libOmxMpeg4Dec.so
 adb pull /system/lib/libOmxVidEnc.so ../../../vendor/htc/$DEVICE/proprietary/libOmxVidEnc.so
 adb pull /system/lib/libcamera.so ../../../vendor/htc/$DEVICE/proprietary/libcamera.so
-adb pull /system/lib/lights.msm7k.so ../../../vendor/htc/$DEVICE/proprietary/liights.msm7k.so
+adb pull /system/lib/hw/lights.msm7k.so ../../../vendor/htc/$DEVICE/proprietary/lights.msm7k.so
 
 
-(cat << EOF) | sed s/__DEVICE__/$DEVICE/g > ../../../vendor/htc/$DEVICE/device_$DEVICE-vendor-blobs.mk
+(cat << EOF) | sed s/__DEVICE__/$DEVICE/g > ../../../vendor/htc/$DEVICE/$DEVICE-vendor-blobs.mk
 # Copyright (C) 2010 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -66,6 +66,7 @@ adb pull /system/lib/lights.msm7k.so ../../../vendor/htc/$DEVICE/proprietary/lii
 
 PRODUCT_COPY_FILES += \\
     vendor/htc/__DEVICE__/proprietary/libgps.so:obj/lib/libgps.so \\
+    vendor/htc/__DEVICE__/proprietary/libcamera.so:obj/lib/libcamera.so \\
     device/htc/__DEVICE__/init.rc:root/init.rc \\
 
 PRODUCT_COPY_FILES += \\

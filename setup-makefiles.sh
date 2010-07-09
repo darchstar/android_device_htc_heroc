@@ -18,7 +18,7 @@ DEVICE=heroc
 
 mkdir -p ../../../vendor/htc/$DEVICE
 
-(cat << EOF) | sed s/__DEVICE__/$DEVICE/g > ../../../vendor/htc/$DEVICE/device_$DEVICE-vendor.mk
+(cat << EOF) | sed s/__DEVICE__/$DEVICE/g > ../../../vendor/htc/$DEVICE/$DEVICE-vendor.mk
 # Copyright (C) 2010 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -48,7 +48,7 @@ PRODUCT_COPY_FILES := \\
 # Pick up overlay for features that depend on non-open-source files
 DEVICE_PACKAGE_OVERLAYS := vendor/htc/__DEVICE__/overlay
 
-\$(call inherit-product, vendor/htc/__DEVICE__/device___DEVICE__-vendor-blobs.mk)
+\$(call inherit-product, vendor/htc/__DEVICE__/__DEVICE__-vendor-blobs.mk)
 EOF
 
 (cat << EOF) | sed s/__DEVICE__/$DEVICE/g > ../../../vendor/htc/$DEVICE/BoardConfigVendor.mk

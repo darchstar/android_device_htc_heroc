@@ -13,4 +13,4 @@
 # limitations under the License.
 
 
-include $(call all-named-subdir-makefiles, recovery  boot  libsensors  liblights)
+include $(call all-named-subdir-makefiles, recovery libsensors)
