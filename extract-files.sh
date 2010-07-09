@@ -43,7 +43,6 @@ adb pull /system/lib/libOmxCore.so ../../../vendor/htc/$DEVICE/proprietary/libOm
 adb pull /system/lib/libOmxH264Dec.so ../../../vendor/htc/$DEVICE/proprietary/libOmxH264Dec.so
 adb pull /system/lib/libOmxMpeg4Dec.so ../../../vendor/htc/$DEVICE/proprietary/libOmxMpeg4Dec.so
 adb pull /system/lib/libOmxVidEnc.so ../../../vendor/htc/$DEVICE/proprietary/libOmxVidEnc.so
-adb pull /system/lib/libcamera.so ../../../vendor/htc/$DEVICE/proprietary/libcamera.so
 adb pull /system/lib/hw/lights.msm7k.so ../../../vendor/htc/$DEVICE/proprietary/lights.msm7k.so
 
 
@@ -66,7 +65,6 @@ adb pull /system/lib/hw/lights.msm7k.so ../../../vendor/htc/$DEVICE/proprietary/
 
 PRODUCT_COPY_FILES += \\
     vendor/htc/__DEVICE__/proprietary/libgps.so:obj/lib/libgps.so \\
-    vendor/htc/__DEVICE__/proprietary/libcamera.so:obj/lib/libcamera.so \\
     device/htc/__DEVICE__/init.rc:root/init.rc \\
 
 PRODUCT_COPY_FILES += \\
@@ -94,7 +92,6 @@ PRODUCT_COPY_FILES += \\
     vendor/htc/__DEVICE__/proprietary/libOmxH264Dec.so:system/lib/libOmxH264Dec.so \\
     vendor/htc/__DEVICE__/proprietary/libOmxMpeg4Dec.so:system/lib/libOmxMpeg4Dec.so \\
     vendor/htc/__DEVICE__/proprietary/libOmxVidEnc.so:system/lib/libOmxVidEnc.so \\
-    vendor/htc/__DEVICE__/proprietary/libcamera.so:system/lib/libcamera.so \\
     vendor/htc/__DEVICE__/proprietary/lights.msm7k.so:system/lib/hw/lights.msm7k.so \\
 EOF
 

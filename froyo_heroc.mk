@@ -70,6 +70,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_COPY_FILES += \
     device/htc/heroc/media_profiles.xml:/system/etc/media_profiles.xml
 
+PRODUCT_PACKAGES := \
+    sensors.heroc 
+
 ## (2) Also get non-open-source aspects if available
 $(call inherit-product-if-exists, vendor/htc/heroc/heroc-vendor.mk)
 

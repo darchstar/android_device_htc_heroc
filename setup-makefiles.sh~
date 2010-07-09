@@ -72,7 +72,6 @@ PRODUCT_SPECIFIC_DEFINES += TARGET_PRELINKER_MAP=\$(TOP)/device/htc/heroc/prelin
 
 BOARD_GPS_LIBRARIES := libgps librpc
 
-BOARD_USES_OLD_CAMERA_HACK := true
-USE_CAMERA_STUB := false 
+USE_CAMERA_STUB := true 
 
 EOF
