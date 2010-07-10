@@ -65,7 +65,6 @@ adb pull /system/lib/hw/lights.msm7k.so ../../../vendor/htc/$DEVICE/proprietary/
 
 PRODUCT_COPY_FILES += \\
     vendor/htc/__DEVICE__/proprietary/libgps.so:obj/lib/libgps.so \\
-    device/htc/__DEVICE__/init.rc:root/init.rc \\
 
 PRODUCT_COPY_FILES += \\
     vendor/htc/__DEVICE__/proprietary/akmd:system/bin/akmd \\
