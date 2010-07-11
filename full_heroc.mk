@@ -18,17 +18,17 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 # Kernel Targets
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 ifeq ($(TARGET_KERNEL_CONFIG),)
-TARGET_PREBUILT_KERNEL := device/htc/heroc/kernel
+TARGET_PREBUILT_KERNEL := device/htc/hero/kernel-CDMA
 endif # TARGET_KERNEL_CONFIG
 endif # TARGET_PREBUILT_KERNEL
 
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
-DEVICE_PACKAGE_OVERLAYS := device/htc/heroc/overlay
+DEVICE_PACKAGE_OVERLAYS := device/htc/hero/overlay
 
 PRODUCT_PACKAGES := \
-    sensors.msm7k
+    sensors.heroc
 
 # Install the features available on this device.
 PRODUCT_COPY_FILES += \
@@ -68,13 +68,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # media configuration xml file
 PRODUCT_COPY_FILES += \
-    device/htc/heroc/media_profiles.xml:/system/etc/media_profiles.xml
-
-PRODUCT_PACKAGES := \
-    sensors.heroc 
+    device/htc/hero/media_profiles.xml:/system/etc/media_profiles.xml
 
 ## (2) Also get non-open-source aspects if available
-$(call inherit-product-if-exists, vendor/htc/heroc/heroc-vendor.mk)
+$(call inherit-product-if-exists, vendor/htc/hero/hero-vendor.mk)
 
 # stuff common to all HTC phones
 $(call inherit-product, device/htc/common/common.mk)
@@ -82,6 +79,6 @@ $(call inherit-product, device/htc/common/common.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full.mk)
 
 # Discard inherited values and use our own instead.
-PRODUCT_NAME := froyo_heroc 
+PRODUCT_NAME := full_heroc 
 PRODUCT_DEVICE := heroc 
-PRODUCT_MODEL := Froyo on Hero CDMA
+PRODUCT_MODEL := Full Android on Hero CDMA

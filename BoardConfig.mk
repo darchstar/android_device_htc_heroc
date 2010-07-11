@@ -22,7 +22,7 @@
 # against the traditional rules of inheritance).
 USE_CAMERA_STUB := true
 
--include vendor/htc/heroc/BoardConfigVendor.mk
+-include vendor/htc/hero/BoardConfigVendor.mk
 
 TARGET_BOARD_PLATFORM := msm7k
 TARGET_ARCH_VARIANT := armv5te
@@ -69,10 +69,10 @@ BOARD_VENDOR_QCOM_AMSS_VERSION := 6355
 
 # The size of a block that can be marked bad.
 BOARD_FLASH_BLOCK_SIZE := 131072
-BOARD_CAMERA_LIBRARIES := libcameraservice libcamera liboemcamera
+BOARD_CAMERA_LIBRARIES := libcameraservice libcamera
 
 # OpenGL drivers config file path
-BOARD_EGL_CFG := device/htc/heroc/egl.cfg
+BOARD_EGL_CFG := device/htc/hero/egl.cfg
 
 # No authoring clock for OpenCore
 BOARD_NO_PV_AUTHORING_CLOCK := true
@@ -84,9 +84,9 @@ TARGET_RECOVERY_UPDATER_LIBS += librecovery_updater_htc
 
 TARGET_RELEASETOOLS_EXTENSIONS := device/htc/common
 
-TARGET_BOOTLOADER_BOARD_NAME := heroc
-TARGET_OTA_ASSERT_DEVICE := heroc
-PRODUCT_BUILD_PROP_OVERRIDES += TARGET_BOOTLOADER_BOARD_NAME=heroc
+TARGET_BOOTLOADER_BOARD_NAME := hero
+TARGET_OTA_ASSERT_DEVICE := hero,heroc
+PRODUCT_BUILD_PROP_OVERRIDES += TARGET_BOOTLOADER_BOARD_NAME=hero
 
 # # cat /proc/mtd
 # dev:    size   erasesize  name
@@ -100,3 +100,5 @@ BOARD_BOOTIMAGE_PARTITION_SIZE := 0x00280000
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x00500000
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 0x05a00000
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x127c0000
+
+#TARGET_RECOVERY_UI_LIB := librecovery_ui_hero librecovery_ui_htc
