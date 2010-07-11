@@ -18,7 +18,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 # Kernel Targets
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 ifeq ($(TARGET_KERNEL_CONFIG),)
-TARGET_PREBUILT_KERNEL := device/htc/hero/kernel-CDMA
+TARGET_PREBUILT_KERNEL := device/htc/heroc/kernel
 endif # TARGET_KERNEL_CONFIG
 endif # TARGET_PREBUILT_KERNEL
 
@@ -69,6 +69,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # media configuration xml file
 PRODUCT_COPY_FILES += \
     device/htc/hero/media_profiles.xml:/system/etc/media_profiles.xml
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.com.google.clientidbase=android-google
 
 ## (2) Also get non-open-source aspects if available
 $(call inherit-product-if-exists, vendor/htc/hero/hero-vendor.mk)
