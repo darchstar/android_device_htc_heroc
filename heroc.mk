@@ -28,8 +28,6 @@ TARGET_PREBUILT_KERNEL := device/htc/heroc/kernel
 endif # TARGET_KERNEL_CONFIG
 endif # TARGET_PREBUILT_KERNEL
 
-PRODUCT_SPECIFIC_DEFINES += TARGET_PRELINKER_MAP=\$(TOP)/device/htc/heroc/prelink-linux-arm-heroc.map
-
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
@@ -43,7 +41,7 @@ $(call inherit-product-if-exists, vendor/htc/heroc/heroc-vendor.mk)
 
 ## (3)  Finally, the least specific parts, i.e. the non-GSM-specific aspects
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.com.google.clientidbase=android-sprint-us \
+	ro.com.google.clientidbase=android-sprint \
 	ro.com.google.locationfeatures=1 \
 	ro.cdma.home.operator.numeric=310120 \
 	ro.cdma.home.operator.alpha=Sprint \
@@ -77,20 +75,18 @@ PRODUCT_COPY_FILES += \
     device/htc/heroc/heroc-keypad.kcm.bin:system/usr/keychars/heroc-keypad.kcm.bin \
     device/htc/heroc/h2w_headset.kl:system/usr/keylayout/h2w_headset.kl
 
+# Passion uses high-density artwork where available
 PRODUCT_LOCALES += mdpi
 
 PRODUCT_COPY_FILES += \
     device/htc/heroc/vold.fstab:system/etc/vold.fstab \
-    device/htc/heroc/apns-conf.xml:system/etc/apns-conf.xml
+    device/htc/heroc/gps.conf:system/etc/gps.conf
 
 PRODUCT_COPY_FILES += \
     device/htc/heroc/wlan.ko:system/lib/modules/wlan.ko \
     device/htc/heroc/ramzswap.ko:system/lib/modules/2.6.29-cyanogenmod/ramzswap.ko
 
 $(call inherit-product-if-exists, vendor/htc/heroc/heroc-vendor.mk)
-
-# media profiles and capabilities spec
-$(call inherit-product, device/htc/heroc/media_a1026.mk)
 
 # stuff common to all HTC phones
 $(call inherit-product, device/htc/common/common.mk)

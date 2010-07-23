@@ -23,9 +23,7 @@
 # WARNING: This line must come *before* including the proprietary
 # variant, so that it gets overwritten by the parent (which goes
 # against the traditional rules of inheritance).
-USE_CAMERA_STUB := false 
-
-BUILD_WITH_FULL_STAGEFRIGHT := true
+USE_CAMERA_STUB := true 
 
 # inherit from the proprietary version
 -include vendor/htc/heroc/BoardConfigVendor.mk
@@ -35,18 +33,12 @@ TARGET_NO_BOOTLOADER := true
 TARGET_BOARD_PLATFORM := msm7k
 TARGET_BOARD_PLATFORM_GPU := qcom
 
-TARGET_CPU_ABI := armeabi
-TARGET_ARCH_VARIANT := armv5te
+# ARMv6-compatible processor rev 5 (v6l)
+TARGET_CPU_ABI := armeabi-v6l
+TARGET_CPU_ABI2 := armeabi
+
 
 TARGET_BOOTLOADER_BOARD_NAME := heroc
-
-#BOARD_USE_ECLAIR_PRELINK_MAP := true
-
-#BOARD_USES_ECLAIR_LIBCAMERA := true
-
-BOARD_USE_HTC_LIBSENSORS := true
-
-BOARD_USE_HERO_LIBSENSORS := true
 
 # Wifi related defines
 BOARD_WPA_SUPPLICANT_DRIVER := CUSTOM
@@ -63,15 +55,16 @@ BOARD_KERNEL_CMDLINE := no_console_suspend=1
 BOARD_KERNEL_BASE := 0x19200000
 
 BOARD_HAVE_BLUETOOTH := true
-BOARD_HAVE_BLUETOOTH_BCM := true
 
-BOARD_VENDOR_QCOM_AMSS_VERSION := 3200
+BOARD_VENDOR_QCOM_AMSS_VERSION := 4410
 
 BOARD_VENDOR_USE_AKMD := akm8973
 
 BOARD_EGL_CFG := device/htc/heroc/egl.cfg
 
 BOARD_USES_QCOM_LIBS := true
+
+BOARD_USES_OLD_CAMERA_HACK := true
 
 # For HTC's USB implementation
 BOARD_USE_HTC_USB_FUNCTION_SWITCH := true
@@ -91,6 +84,8 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 0x15e00000   # limited so we enforce room to
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x1aba0000
 
 BOARD_FLASH_BLOCK_SIZE := 131072
+
+PRODUCT_SPECIFIC_DEFINES += TARGET_PRELINKER_MAP=\$(TOP)/device/htc/heroc/prelink-linux-arm-heroc.map
 
 TARGET_RECOVERY_UI_LIB := librecovery_ui_heroc librecovery_ui_htc
 

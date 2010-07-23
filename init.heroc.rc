@@ -84,14 +84,6 @@ on property:init.svc.wpa_supplicant=stopped
 on property:init.svc.dhcp-release=stopped
     stop dhcpcd
 
-# for enabling EVDO Data-quietcblongs ;)
-
-on property:persist.sys.country=us
-    start echofor3
-
-service echofor3 /system/xbin/echo3
-    oneshot
-
 # compass/accelerometer daemon
 service akmd /system/bin/akmd
     user compass

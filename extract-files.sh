@@ -30,11 +30,11 @@ adb pull /system/etc/firmware/fm_rx_init_1273.2.bts ../../../vendor/htc/$DEVICE/
 adb pull /system/etc/firmware/avpr.bts ../../../vendor/htc/$DEVICE/proprietary/avpr.bts
 adb pull /system/etc/firmware/tiinit_5.3.53.bts ../../../vendor/htc/$DEVICE/proprietary/tiinit_5.3.53.bts
 adb pull /system/etc/wifi/Fw1251r1c.bin ../../../vendor/htc/$DEVICE/proprietary/Fw1251r1c.bin
-adb pull /system/lib/egl/libGLES_qcom.so ../../../vendor/htc/$DEVICE/proprietary/libGLES_qcom.so
+adb pull /system/lib/libmm-adspsvc.so ../../../vendor/htc/$DEVICE/proprietary/libmm-adspsvc.so
 adb pull /system/lib/libaudioeq.so ../../../vendor/htc/$DEVICE/proprietary/libaudioeq.so
 adb pull /system/etc/agps_rm ../../../vendor/htc/$DEVICE/proprietary
-adb pull /system/lib/libmm-adspsvc.so ../../../vendor/htc/$DEVICE/proprietary/libmm-adspsvc.so
 adb pull /system/etc/pvasflocal.cfg ../../../vendor/htc/$DEVICE/proprietary
+adb pull /system/lib/egl/libGLES_qcom.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libOmxVidEnc.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libgps.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libhtc_acoustic.so ../../../vendor/htc/$DEVICE/proprietary
@@ -46,6 +46,8 @@ adb pull /system/lib/libpvasfcommon.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libpvasflocalpb.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libpvasflocalpbreg.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libspeech.so ../../../vendor/htc/$DEVICE/proprietary
+adb pull /system/lib/hw/lights.msm7k.so ../../../vendor/htc/$DEVICE/proprietary
+
 
 (cat << EOF) | sed s/__DEVICE__/$DEVICE/g > ../../../vendor/htc/$DEVICE/$DEVICE-vendor-blobs.mk
 # Copyright (C) 2010 The Android Open Source Project
@@ -82,21 +84,22 @@ PRODUCT_COPY_FILES += \\
     vendor/htc/__DEVICE__/proprietary/tiinit_5.3.53.bts:system/etc/firmware/tiinit_5.3.53.bts \\
     vendor/htc/__DEVICE__/proprietary/vac_config.ini:system/etc/firmware/vac_config.ini \\
     vendor/htc/__DEVICE__/proprietary/Fw1251r1c.bin:system/etc/wifi/Fw1251r1c.bin \\
-    vendor/htc/__DEVICE__/proprietary/libGLES_qcom.so:system/lib/egl/libGLES_qcom.so \\
         vendor/htc/__DEVICE__/proprietary/libaudioeq.so:system/lib/libaudioeq.so \\
+    vendor/htc/__DEVICE__/proprietary/libmm-adspsvc.so:system/lib/libmm-adspsvc.so \\
     vendor/htc/__DEVICE__/proprietary/agps_rm:/system/etc/agps_rm \\
     vendor/htc/__DEVICE__/proprietary/pvasflocal.cfg:/system/etc/pvasflocal.cfg \\
+    vendor/htc/__DEVICE__/proprietary/libGLES_qcom.so:/system/lib/egl/libGLES_qcom.so \\
     vendor/htc/__DEVICE__/proprietary/libOmxVidEnc.so:/system/lib/libOmxVidEnc.so \\
     vendor/htc/__DEVICE__/proprietary/libgps.so:/system/lib/libgps.so \\
     vendor/htc/__DEVICE__/proprietary/libhtc_acoustic.so:/system/lib/libhtc_acoustic.so \\
     vendor/htc/__DEVICE__/proprietary/libhtc_ril.so:/system/lib/libhtc_ril.so \\
-    vendor/htc/__DEVICE__/proprietary/libmm-adspsvc.so:system/lib/libmm-adspsvc.so \\
     vendor/htc/__DEVICE__/proprietary/liboemcamera.so:/system/lib/liboemcamera.so \\
     vendor/htc/__DEVICE__/proprietary/libomx_wmadec_sharedlibrary.so:/system/lib/libomx_wmadec_sharedlibrary.so \\
     vendor/htc/__DEVICE__/proprietary/libomx_wmvdec_sharedlibrary.so:/system/lib/libomx_wmvdec_sharedlibrary.so \\
     vendor/htc/__DEVICE__/proprietary/libpvasfcommon.so:/system/lib/libpvasfcommon.so \\
     vendor/htc/__DEVICE__/proprietary/libpvasflocalpb.so:/system/lib/libpvasflocalpb.so \\
     vendor/htc/__DEVICE__/proprietary/libpvasflocalpbreg.so:/system/lib/libpvasflocalpbreg.so \\
+    vendor/htc/__DEVICE__/proprietary/lights.msm7k.so:/system/lib/hw/lights.msm7k.so \\
     vendor/htc/__DEVICE__/proprietary/libspeech.so:/system/lib/libspeech.so
 
 EOF

@@ -11,7 +11,7 @@ ro.com.android.dataroaming = true
 ro.com.google.locationfeatures = 1
 # density in DPI of the LCD of this board. This is used to scale the UI
 # appropriately. If this property is not defined, the default value is 160 dpi.
-ro.sf.lcd_density = 160 
+ro.sf.lcd_density = 160
 # ro.sf.lcd_density = 160
 
 # For SD storage insert notification sound
@@ -26,6 +26,5 @@ settings.display.autobacklight=1
 # default value of brightness
 settings.display.brightness=143
 
-# This is a high density device with more memory, so larger vm heaps for it.
-dalvik.vm.heapsize=24m
-
+# Disable JIT by default
+dalvik.vm.execution-mode=int:fast
