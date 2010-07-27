@@ -41,7 +41,7 @@ $(call inherit-product-if-exists, vendor/htc/heroc/heroc-vendor.mk)
 
 ## (3)  Finally, the least specific parts, i.e. the non-GSM-specific aspects
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.com.google.clientidbase=android-sprint \
+	ro.com.google.clientidbase=android-sprint-us \
 	ro.com.google.locationfeatures=1 \
 	ro.cdma.home.operator.numeric=310120 \
 	ro.cdma.home.operator.alpha=Sprint \
@@ -59,7 +59,8 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/base/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
     frameworks/base/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
-    frameworks/base/data/etc/android.hardware.touchscreen.multitouch.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.xml
+    frameworks/base/data/etc/android.hardware.touchscreen.multitouch.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.xml \
+    frameworks/base/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml
 
 # media config xml file
 PRODUCT_COPY_FILES += \
@@ -67,7 +68,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     librs_jni \
-    sensors.heroc 
+    sensors.heroc
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
@@ -84,7 +85,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     device/htc/heroc/wlan.ko:system/lib/modules/wlan.ko \
-    device/htc/heroc/ramzswap.ko:system/lib/modules/2.6.29-cyanogenmod/ramzswap.ko
+    device/htc/heroc/ramzwsap.ko:system/lib/modules/2.6.29-cyanogenmod/ramzswap.ko
 
 $(call inherit-product-if-exists, vendor/htc/heroc/heroc-vendor.mk)
 
