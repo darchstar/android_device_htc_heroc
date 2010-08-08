@@ -84,8 +84,7 @@ PRODUCT_COPY_FILES += \
     device/htc/heroc/gps.conf:system/etc/gps.conf
 
 PRODUCT_COPY_FILES += \
-    device/htc/heroc/wlan.ko:system/lib/modules/wlan.ko \
-    device/htc/heroc/ramzswap.ko:system/lib/modules/2.6.29.6-cyanogenmod/ramzswap.ko
+    device/htc/heroc/wlan.ko:system/lib/modules/wlan.ko 
 
 $(call inherit-product-if-exists, vendor/htc/heroc/heroc-vendor.mk)
 
