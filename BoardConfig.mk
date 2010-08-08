@@ -12,18 +12,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# config.mk
 #
-# This file sets variables that control the way modules are built
-# thorughout the system. It should not be used to conditionally
-# disable makefiles (the proper mechanism to control what gets
-# included in a build is to use PRODUCT_PACKAGES in a product
-# definition file).
+# Product-specific compile-time definitions.
 #
 
 # WARNING: This line must come *before* including the proprietary
 # variant, so that it gets overwritten by the parent (which goes
 # against the traditional rules of inheritance).
-USE_CAMERA_STUB := true 
+
+USE_CAMERA_STUB := true
 
 # inherit from the proprietary version
 -include vendor/htc/heroc/BoardConfigVendor.mk
@@ -36,8 +34,7 @@ TARGET_BOARD_PLATFORM_GPU := qcom
 # ARMv6-compatible processor rev 5 (v6l)
 TARGET_CPU_ABI := armeabi-v6l
 TARGET_CPU_ABI2 := armeabi
-
-
+TARGET_ARCH_VARIANT := armv5te
 TARGET_BOOTLOADER_BOARD_NAME := heroc
 
 # Wifi related defines
@@ -51,43 +48,37 @@ WIFI_FIRMWARE_LOADER        := "wlan_loader"
 
 BOARD_USES_GENERIC_AUDIO := false
 
-BOARD_KERNEL_CMDLINE := no_console_suspend=1
+BOARD_KERNEL_CMDLINE := no_console_suspend=1 console=null
 BOARD_KERNEL_BASE := 0x19200000
 
 BOARD_HAVE_BLUETOOTH := true
 
-BOARD_VENDOR_QCOM_AMSS_VERSION := 4410
+BOARD_EGL_CFG := device/htc/heroc/egl.cfg
 
 BOARD_VENDOR_USE_AKMD := akm8973
 
-BOARD_EGL_CFG := device/htc/heroc/egl.cfg
+BOARD_VENDOR_QCOM_AMSS_VERSION := 4410
 
 BOARD_USES_QCOM_LIBS := true
 
-BOARD_USES_OLD_CAMERA_HACK := true
-
-# For HTC's USB implementation
-BOARD_USE_HTC_USB_FUNCTION_SWITCH := true
+BOARD_USES_ECLAIR_LIBCAMERA := true
 
 # # cat /proc/mtd
 # dev:    size   erasesize  name
-# mtd0: 00c00000 00020000 "wimax"
-# mtd1: 000a0000 00020000 "misc"
-# mtd2: 00500000 00020000 "recovery"
-# mtd3: 00280000 00020000 "boot"
-# mtd4: 15e00000 00020000 "system"
-# mtd5: 09f00000 00020000 "cache"
-# mtd6: 1aba0000 00020000 "userdata"
-BOARD_BOOTIMAGE_PARTITION_SIZE := 0x00280000
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x00500000
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 0x15e00000   # limited so we enforce room to grow
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x1aba0000
-
+# mtd0: 000a0000 00020000 "misc"
+# mtd1: 00420000 00020000 "recovery"
+# mtd2: 002c0000 00020000 "boot"
+# mtd3: 0f000000 00020000 "system"
+# mtd4: 05000000 00020000 "cache"
+# mtd5: 09120000 00020000 "userdata"
+BOARD_BOOTIMAGE_PARTITION_SIZE := 002c0000
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x00420000
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 0x0f000000
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x01920000
+# The size of a block that can be marked bad.
 BOARD_FLASH_BLOCK_SIZE := 131072
 
-PRODUCT_SPECIFIC_DEFINES += TARGET_PRELINKER_MAP=\$(TOP)/device/htc/heroc/prelink-linux-arm-heroc.map
-
-TARGET_RECOVERY_UI_LIB := librecovery_ui_heroc librecovery_ui_htc
+TARGET_RECOVERY_UI_LIB := librecovery_ui_heroc librecovery_ui_generic
 
 TARGET_RECOVERY_UPDATER_LIBS += librecovery_updater_htc
 
