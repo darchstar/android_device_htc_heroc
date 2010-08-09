@@ -72,9 +72,9 @@ PRODUCT_COPY_FILES := \\
 PRODUCT_COPY_FILES += \\
     vendor/htc/__DEVICE__/proprietary/akmd:system/bin/akmd \\
     vendor/htc/__DEVICE__/proprietary/AudioPara4.csv:system/etc/AudioPara4.csv \\
-    vendor/htc/__DEVICE__/proprietary/01_qcomm_omx.cfg:system/etc/01_qcomm_omx.cfg \\    
+    vendor/htc/__DEVICE__/proprietary/01_qcomm_omx.cfg:system/etc/01_qcomm_omx.cfg \\
     vendor/htc/__DEVICE__/proprietary/AudioFilter.csv:system/etc/AudioFilter.csv \\
-    vendor/htc/__DEVICE__/proprietary/brf6350.bin:system/etc/firmware/brf6350.bin \\    
+    vendor/htc/__DEVICE__/proprietary/brf6350.bin:system/etc/firmware/brf6350.bin \\
     vendor/htc/__DEVICE__/proprietary/Fw1251r1c.bin:system/etc/wifi/Fw1251r1c.bin \\
     vendor/htc/__DEVICE__/proprietary/AudioPreProcess.csv:system/etc/AudioPreProcess.csv \\
     vendor/htc/__DEVICE__/proprietary/libGLES_qcom.so:system/lib/egl/libGLES_android.so \\
