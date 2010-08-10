@@ -48,6 +48,9 @@ WIFI_FIRMWARE_LOADER        := "wlan_loader"
 
 BOARD_USES_GENERIC_AUDIO := false
 
+# Use HTC USB Function Switch to enable tethering via USB
+BOARD_USE_HTC_USB_FUNCTION_SWITCH := true
+
 BOARD_KERNEL_CMDLINE := no_console_suspend=1 console=null
 BOARD_KERNEL_BASE := 0x19200000
 
