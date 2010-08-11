@@ -28,9 +28,6 @@ TARGET_PREBUILT_KERNEL := device/htc/heroc/kernel
 endif # TARGET_KERNEL_CONFIG
 endif # TARGET_PREBUILT_KERNEL
 
-# The gps config appropriate for this device
-$(call inherit-product, device/common/gps/gps_us_supl.mk)
-
 ## (1) First, the most specific values, i.e. the aspects that are specific to GSM
 
 PRODUCT_COPY_FILES += \
