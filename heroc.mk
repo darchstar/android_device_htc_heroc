@@ -65,7 +65,8 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     librs_jni \
-    sensors.heroc
+    sensors.heroc \
+    lights.heroc
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
