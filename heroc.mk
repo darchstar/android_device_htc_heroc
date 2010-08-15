@@ -82,7 +82,30 @@ PRODUCT_COPY_FILES += \
     device/htc/heroc/gps.conf:system/etc/gps.conf
 
 PRODUCT_COPY_FILES += \
-    device/htc/heroc/wlan.ko:system/lib/modules/wlan.ko 
+   device/htc/heroc/wlan.ko:system/lib/modules/wlan.ko \
+   device/htc/heroc/modules/ah6.ko:system/lib/modules/2.6.29.6-cyanogenmod/ah6.ko \
+   device/htc/heroc/modules/deflate.ko:system/lib/modules/2.6.29.6-cyanogenmod/deflate.ko \
+   device/htc/heroc/modules/esp6.ko:system/lib/modules/2.6.29.6-cyanogenmod/esp6.ko \
+   device/htc/heroc/modules/hid-dummy.ko:system/lib/modules/2.6.29.6-cyanogenmod/hid-dummy.ko \
+   device/htc/heroc/modules/ip6_tunnel.ko:system/lib/modules/2.6.29.6-cyanogenmod/ip6_tunnel.ko \
+   device/htc/heroc/modules/ipcomp6.ko:system/lib/modules/2.6.29.6-cyanogenmod/ipcomp6.ko \
+   device/htc/heroc/modules/ipv6.ko:system/lib/modules/2.6.29.6-cyanogenmod/ipv6.ko \
+   device/htc/heroc/modules/mip6.ko:system/lib/modules/2.6.29.6-cyanogenmod/mip6.ko \
+   device/htc/heroc/modules/sit.ko:system/lib/modules/2.6.29.6-cyanogenmod/sit.ko \
+   device/htc/heroc/modules/tunnel4.ko:system/lib/modules/2.6.29.6-cyanogenmod/tunnel4.ko \
+   device/htc/heroc/modules/tunnel6.ko:system/lib/modules/2.6.29.6-cyanogenmod/tunnel6.ko \
+   device/htc/heroc/modules/xfrm6_mode_beet.ko:system/lib/modules/2.6.29.6-cyanogenmod/xfrm6_mode_beet.ko \
+   device/htc/heroc/modules/xfrm6_mode_ro.ko:system/lib/modules/2.6.29.6-cyanogenmod/xfrm6_mode_ro.ko \
+   device/htc/heroc/modules/xfrm6_mode_transport.ko:system/lib/modules/2.6.29.6-cyanogenmod/xfrm6_mode_transport.ko \
+   device/htc/heroc/modules/xfrm6_mode_tunnel.ko:system/lib/modules/2.6.29.6-cyanogenmod/xfrm6_mode_tunnel.ko \
+   device/htc/heroc/modules/xfrm6_tunnel.ko:system/lib/modules/2.6.29.6-cyanogenmod/xfrm6_tunnel.ko \
+   device/htc/heroc/modules/xfrm_ipcomp.ko:system/lib/modules/2.6.29.6-cyanogenmod/xfrm_ipcomp.ko \
+   device/htc/heroc/modules/xt_TCPMSS.ko:system/lib/modules/2.6.29.6-cyanogenmod/xt_TCPMSS.ko \
+   device/htc/heroc/modules/xt_hashlimit.ko:system/lib/modules/2.6.29.6-cyanogenmod/xt_hashlimit.ko 
+
+
+    
+
 
 $(call inherit-product-if-exists, vendor/htc/heroc/heroc-vendor.mk)
 
