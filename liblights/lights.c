@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2010 Diogo Ferreira <diogo@underdev.org>
+ * Copyright (C) 2010 Ameer Ghouse 
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,26 +31,33 @@
 
 #include <hardware/lights.h>
 
+#define LIGHT_ATTENTION 1
+#define LIGHT_NOTIFY 2
+
 static pthread_once_t g_init = PTHREAD_ONCE_INIT;
 static pthread_mutex_t g_lock = PTHREAD_MUTEX_INITIALIZER;
-static struct light_state_t g_notification;
+static struct light_state_t g_notify;
+static struct light_state_t g_attention;
+static struct light_state_t g_no_action;
 static struct light_state_t g_battery;
 static int g_backlight = 255;
 
 char const*const AMBER_LED_FILE = "/sys/class/leds/amber/brightness";
 char const*const GREEN_LED_FILE = "/sys/class/leds/green/brightness";
+char const*const JOGBALL_FILE = "/sys/class/leds/jogball-backlight/brightness";
 
 char const*const BUTTON_FILE = "/sys/class/leds/button-backlight/brightness";
-char const*const JOGBALL_FILE = "/sys/class/leds/jogball-backlight/brightness";
 
 char const*const AMBER_BLINK_FILE = "/sys/class/leds/amber/blink";
 char const*const GREEN_BLINK_FILE = "/sys/class/leds/green/blink";
+char const*const JOGBALL_BLINK_FILE = "/sys/class/leds/jogball-backlight/blink";
 
 char const*const LCD_BACKLIGHT_FILE = "/sys/class/leds/lcd-backlight/brightness";
 
 enum {
 	LED_AMBER,
 	LED_GREEN,
+	LED_WHITE,
 	LED_BLANK,
 };
 
@@ -87,7 +94,6 @@ static int is_lit (struct light_state_t const* state) {
 	return state->color & 0x00ffffff;
 }
 
-
 static void set_speaker_light_locked (struct light_device_t *dev, struct light_state_t *state) {
 	unsigned int colorRGB = state->color & 0xFFFFFF;
 	unsigned int color = LED_BLANK;
@@ -96,10 +102,12 @@ static void set_speaker_light_locked (struct light_device_t *dev, struct light_s
 		color = LED_GREEN;
 	if ((colorRGB >> 16)&0xFF)
 		color = LED_AMBER;
+	if ((colorRGB >> 0)&0xFF)
+		color = LED_WHITE;
 
 	int amber = (colorRGB >> 16)&0xFF;
 	int green = (colorRGB >> 8)&0xFF;
-	int blue = (colorRGB)&0xFF;
+	int white = (colorRGB >> 0)&0xFF;
 
 	switch (state->flashMode) {
 		case LIGHT_FLASH_TIMED:
@@ -109,6 +117,9 @@ static void set_speaker_light_locked (struct light_device_t *dev, struct light_s
 					break;
 				case LED_GREEN:
 					write_int (GREEN_BLINK_FILE, 1);
+					break;
+				case LED_WHITE:
+					write_int (JOGBALL_BLINK_FILE, 1);
 					break;
 				case LED_BLANK:
 					write_int (AMBER_BLINK_FILE, 0);
@@ -130,6 +141,11 @@ static void set_speaker_light_locked (struct light_device_t *dev, struct light_s
 					write_int (AMBER_LED_FILE, 0);
 					write_int (GREEN_LED_FILE, 1);
 					break;
+				case LED_WHITE:
+					write_int (AMBER_LED_FILE, 0);
+					write_int (GREEN_LED_FILE, 0);
+					write_int (JOGBALL_FILE, 1);
+					break;
 				case LED_BLANK:
 					write_int (AMBER_LED_FILE, 0);
 					write_int (GREEN_LED_FILE, 0);
@@ -144,12 +160,11 @@ static void set_speaker_light_locked (struct light_device_t *dev, struct light_s
 
 }
 
-
 static void handle_speaker_battery_locked (struct light_device_t *dev) {
 	if (is_lit (&g_battery)) {
 		set_speaker_light_locked (dev, &g_battery);
 	} else {
-		set_speaker_light_locked (dev, &g_notification);
+		set_speaker_light_locked (dev, &g_notify);
 	}
 }
 
@@ -159,11 +174,12 @@ static int set_light_buttons (struct light_device_t* dev,
 	int on = is_lit (state);
 	pthread_mutex_lock (&g_lock);
 	err = write_int (BUTTON_FILE, on?255:0);
-	err = write_int (JOGBALL_FILE, on?255:0);
+	err = write_int (JOGBALL_FILE, on?1:0);
 	pthread_mutex_unlock (&g_lock);
 
 	return 0;
 }
+
 
 static int rgb_to_brightness(struct light_state_t const* state)
 {
@@ -196,15 +212,17 @@ static int set_light_battery (struct light_device_t* dev,
 }
 
 static int set_light_attention (struct light_device_t* dev,
-		struct light_state_t const* state) {
-	/* bravo has no attention, bad bravo */
-
-	return 0;
+                struct light_state_t const* state) {
+        return 0;
 }
+
+
 static int set_light_notifications (struct light_device_t* dev,
 		struct light_state_t const* state) {
+	int err =0;
+	int on = is_lit (state);
 	pthread_mutex_lock (&g_lock);
-	g_notification = *state;
+	g_notify = *state;
 	handle_speaker_battery_locked (dev);
 	pthread_mutex_unlock (&g_lock);
 	return 0;
