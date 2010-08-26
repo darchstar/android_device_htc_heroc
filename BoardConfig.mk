@@ -88,3 +88,4 @@ TARGET_RECOVERY_UPDATER_LIBS += librecovery_updater_htc
 TARGET_RELEASETOOLS_EXTENSIONS := device/htc/common
 
 PRODUCT_SPECIFIC_DEFINES += TARGET_PRELINKER_MAP=\$(TOP)/device/htc/heroc/prelink-linux-arm-heroc.map
+TARGET_PREBUILT_KERNEL := device/htc/heroc/kernel

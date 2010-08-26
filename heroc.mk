@@ -21,13 +21,6 @@
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
-# Kernel Targets
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-ifeq ($(TARGET_KERNEL_CONFIG),)
-TARGET_PREBUILT_KERNEL := device/htc/heroc/kernel
-endif # TARGET_KERNEL_CONFIG
-endif # TARGET_PREBUILT_KERNEL
-
 ## (1) First, the most specific values, i.e. the aspects that are specific to GSM
 
 PRODUCT_COPY_FILES += \
@@ -103,8 +96,14 @@ PRODUCT_COPY_FILES += \
    device/htc/heroc/modules/xt_TCPMSS.ko:system/lib/modules/2.6.29.6-cyanogenmod/xt_TCPMSS.ko \
    device/htc/heroc/modules/xt_hashlimit.ko:system/lib/modules/2.6.29.6-cyanogenmod/xt_hashlimit.ko 
 
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+LOCAL_KERNEL := device/htc/heroc/kernel
+else
+LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+endif
 
-    
+PRODUCT_COPY_FILES += \
+    $(LOCAL_KERNEL):kernel
 
 
 $(call inherit-product-if-exists, vendor/htc/heroc/heroc-vendor.mk)
