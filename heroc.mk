@@ -84,6 +84,7 @@ PRODUCT_COPY_FILES += \
    device/htc/heroc/modules/ipcomp6.ko:system/lib/modules/2.6.29.6-cyanogenmod/ipcomp6.ko \
    device/htc/heroc/modules/ipv6.ko:system/lib/modules/2.6.29.6-cyanogenmod/ipv6.ko \
    device/htc/heroc/modules/mip6.ko:system/lib/modules/2.6.29.6-cyanogenmod/mip6.ko \
+   device/htc/heroc/modules/ramzswap.ko:system/lib/modules/2.6.29.6-cyanogenmod/ramzswap.ko \
    device/htc/heroc/modules/sit.ko:system/lib/modules/2.6.29.6-cyanogenmod/sit.ko \
    device/htc/heroc/modules/tunnel4.ko:system/lib/modules/2.6.29.6-cyanogenmod/tunnel4.ko \
    device/htc/heroc/modules/tunnel6.ko:system/lib/modules/2.6.29.6-cyanogenmod/tunnel6.ko \
