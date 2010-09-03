@@ -72,7 +72,8 @@ PRODUCT_LOCALES += mdpi
 
 PRODUCT_COPY_FILES += \
     device/htc/heroc/vold.fstab:system/etc/vold.fstab \
-    device/htc/heroc/gps.conf:system/etc/gps.conf
+    device/htc/heroc/gps.conf:system/etc/gps.conf \
+    device/htc/heroc/apns-conf.xml:system/etc/apns-conf.xml
 
 PRODUCT_COPY_FILES += \
    device/htc/heroc/wlan.ko:system/lib/modules/wlan.ko \
